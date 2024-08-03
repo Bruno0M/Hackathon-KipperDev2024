@@ -3,7 +3,7 @@ import LogIn from "./routes/LogIn";
 function App() {
   return (
     <>
-      <LogIn />
+    <LogIn/>
     </>
   );
 }

@@ -1,10 +1,11 @@
 import { Box } from "@mui/material";
-import Login from "../components/Login";
 import Logo from "../components/Logo";
-export default function LogIn() {
+import Registro from "../components/Registro";
+export default function Register() {
   return (
     <>
     <Box component="section" sx={{
+        my: "20px",
         width:"100%",
         display: "flex",
         flexDirection: "column",
@@ -12,7 +13,7 @@ export default function LogIn() {
     }}>
         
           <Logo />
-          <Login />
+          <Registro />
     </Box>
     </>
   );

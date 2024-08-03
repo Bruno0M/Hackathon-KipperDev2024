@@ -9,7 +9,6 @@ export default function Login() {
         borderRadius: "8px",
         margin: "0 auto",
         padding: "24px",
-        marginTop: "50px",
       }}
     >
       <div id="inputs">
