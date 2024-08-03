@@ -1,10 +1,9 @@
-import Login from "../components/Login";
-import Logo from "../components/Logo";
-export default function ErrorPage() {
+import NavHeader from "../components/NavHeader";
+
+export default function Home() {
   return (
     <>
-      <Logo />
-      <Login />
+      <NavHeader />
     </>
   );
 }

@@ -3,7 +3,7 @@ import Bell from "../assets/Bell.svg";
 import Search from "../assets/Search.svg";
 import Hamburguer from "../assets/Hamburguer.svg";
 
-export default function NavHeader() {
+export default function Sidebar() {
   return (
     <Box
       component="header"
