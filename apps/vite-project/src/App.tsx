@@ -1,12 +1,9 @@
-import "./App.css";
-import Login from "./components/Login";
-import NavHeader from "./components/NavHeader";
+import LogIn from "./routes/LogIn";
 
 function App() {
   return (
     <>
-      <NavHeader/>
-      <Login />
+      <LogIn />
     </>
   );
 }

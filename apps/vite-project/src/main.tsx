@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 
-import App from './App';
 import ErrorPage from './routes/ErrorPage';
+import App from './App';
 
 
 const router = createBrowserRouter([

@@ -5,7 +5,6 @@ export default function Login() {
       component="form"
       sx={{
         width: "300px",
-        height: "230px",
         border: "1px solid #D9D9D9",
         borderRadius: "8px",
         margin: "0 auto",
@@ -36,7 +35,7 @@ export default function Login() {
           display: "flex",
           flexDirection: "row",
           width: "100%",
-          height: "40px",
+          gap: 2,
           justifyContent: "space-between",
           alignContent: "center",
         }}
