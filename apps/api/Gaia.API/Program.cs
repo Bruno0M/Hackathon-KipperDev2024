@@ -1,8 +1,11 @@
 using DiscordAspnet.Application.Services;
+using Gaia.Application.DTOs.PostDTOs;
 using Gaia.Application.Interfaces;
 using Gaia.Application.Services;
 using Gaia.Domain.Entities;
+using Gaia.Domain.Repositories;
 using Gaia.Infrastructure.Data;
+using Gaia.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -41,6 +44,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<IPostRepository, PostRepository>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
