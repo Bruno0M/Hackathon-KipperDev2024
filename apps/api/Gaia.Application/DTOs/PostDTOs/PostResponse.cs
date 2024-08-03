@@ -2,7 +2,8 @@
 {
     public record PostResponse(
         Guid Id,
+        Guid UserId,
         string PostUrl,
         string Description,
-        string Username);
+        string Author);
 }

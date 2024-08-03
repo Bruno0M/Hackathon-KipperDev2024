@@ -1,5 +1,6 @@
 ﻿using Gaia.Application.DTOs.PostDTOs;
 using Gaia.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gaia.API.Controllers
@@ -15,16 +16,26 @@ namespace Gaia.API.Controllers
             _postService = postService;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(PostRequest postRequest)
         {
             if (ModelState.IsValid)
             {
-                var post = _postService.CreatePostAsync(postRequest);
+                //var userId = UserIdentityHelper.GetCurrentUserId(User);
+
+                var post = await _postService.CreatePostAsync(postRequest, User);
                 return Ok(post);
             }
-
             return BadRequest();
         }
+
+        //[Authorize]
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            return Ok(await _postService.GetPostsAsync());
+        }
+
     }
 }
