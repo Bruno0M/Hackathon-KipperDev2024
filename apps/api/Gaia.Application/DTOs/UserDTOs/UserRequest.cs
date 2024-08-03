@@ -3,6 +3,7 @@
     public record UserRequest(
         string Username,
         string Email,
+        string? ProfileUrl,
         string Password,
         string ConfirmPassword);
 }
