@@ -1,11 +1,11 @@
 {
-  "name": "hackaton-api",
+  "name": "gaia-api",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "clean": "dotnet clean",
     "build": "dotnet build -c Release",
-    "dev": "dotnet watch --project Hackaton.API/Hackaton.API.csproj",
+    "dev": "dotnet watch --project Gaia.API/Gaia.API.csproj",
     "test": "dotnet test"
   }
 }
