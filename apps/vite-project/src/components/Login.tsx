@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, redirect } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Box, Typography, TextField, Button } from "@mui/material";
 
 import authLogin from "../services/Auth/AuthLogin";
@@ -7,18 +7,32 @@ import authLogin from "../services/Auth/AuthLogin";
 export default function Login() {
   const [email, setEmail] = React.useState<string>();
   const [password, setPassword] = React.useState<string>();
+  const navigate = useNavigate();
 
-  function handleLogin() {
-    if (!email) return;
-    if (!password) return;
-    const authData: FormData = new FormData();
+
+  async function handleLogin() {
+    if (!email || !password) return;
+
+    const authData = new FormData();
     authData.append("email", email);
     authData.append("password", password);
     try {
-      authLogin(authData);
-      redirect("/Home");
+      const response = await authLogin(authData);
+      console.log('API Response:', response); 
+      if (response && response.data) {
+        console.log('Response Data:', response.data);
+        const { data } = response;
+        if (data && data.token) {
+          localStorage.setItem('token', data.token);
+          navigate("/Home");
+        } else {
+          console.error('Token is missing from the response data');
+        }
+      } else {
+        console.error('Response data is missing');
+      }
     } catch (err) {
-      console.log(err);
+      console.error('Login error:', err);
     }
   }
 

@@ -12,13 +12,15 @@ namespace Gaia.Test.UnitTest.Controllers
     {
         private readonly Mock<IPostService> _postServiceMock;
         private readonly Mock<IImgurService> _imgurServiceMock;
+        private readonly Mock<IUpVoteService> _upVoteServiceMock;
         private readonly PostsController _controller;
 
         public PostsControllerTests()
         {
             _postServiceMock = new Mock<IPostService>();
             _imgurServiceMock = new Mock<IImgurService>();
-            _controller = new PostsController(_postServiceMock.Object, _imgurServiceMock.Object);
+            _upVoteServiceMock = new Mock<IUpVoteService>();
+            _controller = new PostsController(_postServiceMock.Object, _imgurServiceMock.Object, _upVoteServiceMock.Object);
         }
 
         [Fact]

@@ -1,14 +1,14 @@
-import LogIn from "./routes/LogIn";
-import Publicar from "./routes/Publicar";
-import Register from "./routes/Registrar";
-import "./index.css"
+import React from 'react';
+import useAuthCheck from './hooks/useAuthCheck';
+import { Outlet } from 'react-router-dom'; 
 
-function App() {
+const App: React.FC = () => {
+  useAuthCheck(); 
   return (
-    <>
-      <Publicar />
-    </>
+    <div>
+      <Outlet />
+    </div>
   );
-}
+};
 
 export default App;

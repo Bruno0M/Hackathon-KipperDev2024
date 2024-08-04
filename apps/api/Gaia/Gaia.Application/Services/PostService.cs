@@ -32,6 +32,7 @@ namespace Gaia.Application.Services
             {
                 response.Message = "User not found";
                 response.Status = HttpStatusCode.NotFound;
+                return response;
             }
 
             var postUrl = await _imgurService.UploadImageAsync(postRequest.Image);
@@ -50,7 +51,8 @@ namespace Gaia.Application.Services
                 post.UserId,
                 post.PostUrl,
                 post.Description,
-                userM.UserName);
+                userM.UserName,
+                userM.ProfileUrl);
 
             response.Data = postResponse;
             response.Message = "Post successfully created";
@@ -70,7 +72,8 @@ namespace Gaia.Application.Services
                 p.UserId,
                 p.PostUrl,
                 p.Description,
-                p.User?.UserName));
+                p.User?.UserName,
+                p.User?.ProfileUrl));
 
             response.Data = postResponse;
             response.Status = HttpStatusCode.OK;

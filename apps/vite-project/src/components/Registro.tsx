@@ -1,16 +1,28 @@
 import React, { useState } from "react";
-import { Box, Typography, TextField, Button, Input } from "@mui/material";
-
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Input,
+  IconButton,
+  Badge,
+} from "@mui/material";
+import AvatarPlaceholder from "../assets/AvatarPlaceholder.svg";
+import Upload from "../assets/upload.svg";
 import authRegister from "../services/Auth/AuthRegister";
+import { useNavigate } from "react-router-dom";
 
 export default function Registro() {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
   const [profileUrl, setProfileUrl] = useState<File | null>(null);
+  const navigate = useNavigate();
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -27,49 +39,67 @@ export default function Registro() {
     e.preventDefault();
 
     const data = new FormData();
-    data.append('Username', formData.username);
-    data.append('Email', formData.email);
+    data.append("Username", formData.username);
+    data.append("Email", formData.email);
     if (profileUrl) {
-      data.append('ProfileUrl', profileUrl);
+      data.append("ProfileUrl", profileUrl);
     }
-    data.append('Password', formData.password);
-    data.append('ConfirmPassword', formData.confirmPassword);
+    data.append("Password", formData.password);
+    data.append("ConfirmPassword", formData.confirmPassword);
 
     try {
       const response = await authRegister(data);
       console.log(response);
+      if (response.status == 200) {
+        navigate('/Login')
+      }
     } catch (error) {
-      console.error('There was an error!', error);
+      console.error("There was an error!", error);
     }
   };
 
   return (
     <Box
       component="form"
-      sx={{
-        width: "320px",
-        border: "1px solid #D9D9D9",
-        borderRadius: "8px",
-        margin: "0 auto",
-        padding: "24px",
-      }}
+      sx={{width: "100%vw", display: "flex", flexDirection: "column", alignItems: "center"}}
       onSubmit={handleSubmit}
     >
-      <div id="inputs">
-        <Typography sx={{ marginBottom: "5px", color: "#1E1E1E" }}>Foto de Perfil</Typography>
-        <Input
-          fullWidth
-          type="file"
-          name="profileUrl"
-          onChange={handleFileChange}
-          inputProps={{ accept: 'image/*' }}
-        />
+      <Badge
+        badgeContent={
+          <img style={{ width: "20px", height: "20px", marginTop: "15px"}} src={Upload} />
+        }
+      >
+        <IconButton sx={{ display: "flex" }} component="label">
+          <img
+            style={{ width: "80px", height: "80px" }}
+            src={AvatarPlaceholder}
+            alt="Avatar Placeholder"
+          ></img>
+          <Input
+            type="file"
+            name="profileUrl"
+            onChange={handleFileChange}
+            inputProps={{ accept: "image/*" }}
+            style={{ display: "none" }}
+          />
+        </IconButton>
+      </Badge>
+      <Box  
+        sx={{
+          width: "320px",
+          border: "1px solid #D9D9D9",
+          borderRadius: "8px",
+          marginY: "20px",
+          padding: "24px",
+        }}
+      >
         <Typography sx={{ marginBottom: "5px", color: "#1E1E1E" }}>
           Nome
         </Typography>
         <TextField
           name="username"
           onChange={handleChange}
+          placeholder="****************"
           variant="outlined"
           size="small"
           sx={{ width: "100%", marginBottom: "24px", color: "#1E1E1E" }}
@@ -80,6 +110,7 @@ export default function Registro() {
         <TextField
           name="email"
           onChange={handleChange}
+          placeholder="****************"
           variant="outlined"
           size="small"
           sx={{ width: "100%", marginBottom: "24px", color: "#1E1E1E" }}
@@ -89,6 +120,7 @@ export default function Registro() {
           name="password"
           type="password"
           onChange={handleChange}
+          placeholder="****************"
           variant="outlined"
           size="small"
           sx={{ width: "100%", marginBottom: "24px" }}
@@ -100,21 +132,11 @@ export default function Registro() {
           name="confirmPassword"
           type="password"
           onChange={handleChange}
+          placeholder="****************"
           variant="outlined"
           size="small"
           sx={{ width: "100%", marginBottom: "24px", color: "#1E1E1E" }}
         />
-      </div>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          width: "100%",
-          height: "40px",
-          justifyContent: "space-between",
-          alignContent: "center",
-        }}
-      >
         <Button
           type="submit"
           sx={{
