@@ -8,24 +8,25 @@ import AvatarPlaceholder from "../assets/AvatarPlaceholder.svg";
 
 export default function Sidebar() {
   return (
-    <Box sx={{ width: "100vw", position: "absolute", top: 0, left: 0 }}>
+    <Box sx={{ width: "100%", backgroundColor: "#008510D0" }}>
       <Box
         sx={{
           ml: 0,
-          width: "30%",
+          width: "100%",
           display: "flex",
+          minHeight: "100vh",
           minWidth: "max-content",
           flexDirection: "column",
           backdropFilter: "blur(5)",
         }}
       >
-        <Box component="span" sx={{ backgroundColor: "#008510D0" }}>
+        <Box component="span" sx={{ backgroundColor: "#008510D0", p: 1 }}>
           <Box
             component={"img"}
             src={AvatarPlaceholder}
             sx={{ justifyContent: "flex-start" }}
           />
-          <Box component={"p"} sx={{ justifySelf: "flex-end" }}>
+          <Box component={"span"} sx={{ textAlign: "center" }}>
             Perfil
           </Box>
         </Box>
