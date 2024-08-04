@@ -2,7 +2,14 @@ import { Box, Typography, Avatar, Stack, IconButton } from "@mui/material";
 import LeafUpvote from "../assets/LeafUpvote.svg";
 import SaveIcon from "../assets/Save.svg";
 
-export default function Posts() {
+interface PostProps {
+  postUrl: string;
+  description: string;
+  author: string;
+}
+
+export default function Posts({ postUrl, author }: PostProps) {
+
   return (
     <Box
       sx={{
@@ -11,6 +18,7 @@ export default function Posts() {
         minHeight: "350px",
         padding: "0px 20px 0px 20px",
         margin: "0 auto",
+        mb: 2
       }}
     >
       <Box>
@@ -28,23 +36,29 @@ export default function Posts() {
             }}
           />
           <Typography sx={{ fontSize: "14px", fontWeight: "600" }}>
-          Nome de usuario
+          {author}
           </Typography>
         </Stack>
       </Box>
       <Box
         sx={{
           backgroundColor: "#F1F1F1",
-          height: "100%",
+          height: "300px",
           my: "8px",
-          aspectRatio: "1 / 1",
           mx: "auto",
+          overflow: "hidden",
         }}
       >
         <Box
-          sx={{ aspectRatio: "1 / 1", objectFit: "contain" }}
+          component="img"
+          src={postUrl}
+          alt="Post"
+          sx={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
         >
-          imagem placeholder
         </Box>
       </Box>
       <Box>
@@ -75,6 +89,7 @@ export default function Posts() {
                 component={"img"}
                 style={{ width: "30.72px", height: "32.64px" }}
                 src="./src/assets/share.png"
+                alt="Share"
               />
             </IconButton>
           </Box>
