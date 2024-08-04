@@ -1,34 +1,48 @@
-import './index.css'
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import "./index.css";
+import React from "react";
+import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 
-import App from './App';
-import Home from './routes/Home';
-import LogIn from './routes/LogIn';
-import Register from './routes/Register';
-import ErrorPage from './routes/ErrorPage';
-
+import App from "./App";
+import Home from "./routes/Home";
+import LogIn from "./routes/LogIn";
+import Navegar from "./routes/Navegar";
+import Publicar from "./routes/Publicar";
+import Leituras from "./routes/Leituras";
+import Register from "./routes/Registrar";
+import ErrorPage from "./routes/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <App />,
     errorElement: <ErrorPage />,
   },
   {
     path: "/LogIn",
-    element: <LogIn/>,
+    element: <LogIn />,
   },
   {
     path: "/Register",
-    element: <Register/>,
+    element: <Register />,
   },
   {
     path: "/Home",
-    element: <Home/>,
-  }
+    element: <Home />,
+  },
+  {
+    path: "/navegar",
+    element: <Navegar />,
+  },
+  {
+    path: "/publicar",
+    element: <Publicar />,
+  },
+  {
+    path: "/leituras",
+    element: <Leituras />,
+  },
 ]);
 
 const theme = createTheme({
@@ -67,13 +81,12 @@ const theme = createTheme({
   },
 });
 
-
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <CssBaseline>
       <ThemeProvider theme={theme}>
         <RouterProvider router={router} />
       </ThemeProvider>
     </CssBaseline>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);

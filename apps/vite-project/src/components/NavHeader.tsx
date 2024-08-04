@@ -21,12 +21,11 @@ export default function NavHeader() {
         zIndex: 99,
         width: "100%",
         height: "60px",
-        opacity: "70%",
         display: "flex",
         position: "fixed",
         flexDirection: "row",
-        backdropFilter: "blur(4px)",
-        backgroundColor: "#00851080",
+        backdropFilter: "blur(5px)",
+        backgroundColor: "#00C04041",
       }}
     >
       <Box

@@ -1,28 +1,28 @@
 import { Box, Stack, IconButton, TextField } from "@mui/material";
-import NavBar from "./NavBar";
 import NavPublish from "./NavPublish";
 
-export default function Publicar() {
+export default function Publish() {
   return (
     <>
       <NavPublish />
       <Box
         sx={{
-          backgroundColor: "#c1c1c1",
-          height: "100%vw",
+          mt: 7.5,
+          flex: 1,
+          mb: 10.5,
+          display: "flex",
+          flexDirection: "column",
+          backgroundColor: "primary",
+          justifyItems: "space-around",
         }}
         component="form"
       >
-        <Stack sx={{ width: "100%", height: "100%" }} direction="row">
-          <TextField
-            sx={{ width: "100%",  }}
-            multiline={true}
-            rows={25}
-            maxRows={25}
-            placeholder="Conteúdo"
-          ></TextField>
-        </Stack>
-        <Box sx={{ padding: "10px" }}>
+        <TextField
+          sx={{ width: "100%", minHeight: 1 }}
+          multiline={true}
+          placeholder="Conteúdo"
+        />
+        <Box sx={{ px: "10px", m: 0, height: 1 }}>
           <Stack sx={{ justifyContent: "space-between" }} direction="row">
             <Box>
               <IconButton>
@@ -40,7 +40,6 @@ export default function Publicar() {
             </IconButton>
           </Stack>
         </Box>
-        <NavBar />
       </Box>
     </>
   );

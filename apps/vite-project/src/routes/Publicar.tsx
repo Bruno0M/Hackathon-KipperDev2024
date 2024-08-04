@@ -1,10 +1,10 @@
 import BottonNav from "../components/BottomNav";
-import NavHeader from "../components/NavHeader";
+import Publish from "../components/Publish";
 
-export default function Home() {
+export default function Publicar() {
   return (
     <>
-      <NavHeader />
+      <Publish />
       <BottonNav />
     </>
   );

@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import Logo from "../components/Logo";
 import Registro from "../components/Registro";
-export default function Register() {
+export default function Registrar() {
   return (
     <>
     <Box component="section" sx={{
