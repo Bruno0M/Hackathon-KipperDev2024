@@ -50,7 +50,8 @@ namespace Gaia.Application.Services
                 post.UserId,
                 post.PostUrl,
                 post.Description,
-                userM.UserName);
+                userM.UserName,
+                userM.ProfileUrl);
 
             response.Data = postResponse;
             response.Message = "Post successfully created";
@@ -70,7 +71,8 @@ namespace Gaia.Application.Services
                 p.UserId,
                 p.PostUrl,
                 p.Description,
-                p.User?.UserName));
+                p.User?.UserName,
+                p.User?.ProfileUrl));
 
             response.Data = postResponse;
             response.Status = HttpStatusCode.OK;

@@ -5,5 +5,6 @@
         Guid UserId,
         string PostUrl,
         string Description,
-        string Author);
+        string Author,
+        string AuthorUrl);
 }
