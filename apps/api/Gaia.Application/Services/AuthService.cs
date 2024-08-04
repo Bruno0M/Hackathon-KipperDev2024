@@ -11,23 +11,27 @@ namespace DiscordAspnet.Application.Services
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ITokenService _tokenService;
+        private readonly IImgurService _imgurService;
 
-
-
-        public AuthService(UserManager<ApplicationUser> userManager, ITokenService tokenService)
+        public AuthService(UserManager<ApplicationUser> userManager, ITokenService tokenService, IImgurService imgurService)
         {
             _userManager = userManager;
             _tokenService = tokenService;
+            _imgurService = imgurService;
         }
 
         public async Task<ServiceResponse<string>> Register(UserRequest userRequest)
         {
             ServiceResponse<string> response = new();
 
+
+            var postUrl = await _imgurService.UploadImageAsync(userRequest.ProfileUrl);
+
             var user = new ApplicationUser()
             {
                 Email = userRequest.Email,
                 UserName = userRequest.Username,
+                ProfileUrl = postUrl
             };
 
             var result = await _userManager.CreateAsync(user, userRequest.Password);

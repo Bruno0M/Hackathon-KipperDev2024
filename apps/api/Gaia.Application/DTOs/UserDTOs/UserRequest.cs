@@ -1,9 +1,11 @@
-﻿namespace Gaia.Application.DTOs.UserDTOs
+﻿using Microsoft.AspNetCore.Http;
+
+namespace Gaia.Application.DTOs.UserDTOs
 {
     public record UserRequest(
         string Username,
         string Email,
-        string? ProfileUrl,
+        IFormFile ProfileUrl,
         string Password,
         string ConfirmPassword);
 }

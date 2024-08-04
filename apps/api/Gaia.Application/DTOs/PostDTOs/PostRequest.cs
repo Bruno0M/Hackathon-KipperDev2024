@@ -1,6 +1,8 @@
-﻿namespace Gaia.Application.DTOs.PostDTOs
+﻿using Microsoft.AspNetCore.Http;
+
+namespace Gaia.Application.DTOs.PostDTOs
 {
     public record PostRequest(
-        string PostUrl,
+        IFormFile Image,
         string Description);
 }

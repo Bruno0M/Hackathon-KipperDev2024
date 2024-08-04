@@ -13,11 +13,13 @@ namespace Gaia.Application.Services
     {
         private readonly IPostRepository _postRepository;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IImgurService _imgurService;
 
-        public PostService(IPostRepository postRepository, UserManager<ApplicationUser> userManager)
+        public PostService(IPostRepository postRepository, UserManager<ApplicationUser> userManager, IImgurService imgurService)
         {
             _postRepository = postRepository;
             _userManager = userManager;
+            _imgurService = imgurService;
         }
 
         public async Task<ServiceResponse<PostResponse>> CreatePostAsync(PostRequest postRequest, ClaimsPrincipal user)
@@ -32,11 +34,13 @@ namespace Gaia.Application.Services
                 response.Status = HttpStatusCode.NotFound;
             }
 
+            var postUrl = await _imgurService.UploadImageAsync(postRequest.Image);
+
             Post post = new Post()
             {
                 UserId = userM.Id,
                 Description = postRequest.Description,
-                PostUrl = postRequest.PostUrl
+                PostUrl = postUrl
             };
 
             await _postRepository.CreatePostAsync(post);
