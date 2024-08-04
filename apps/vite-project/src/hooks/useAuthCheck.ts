@@ -16,8 +16,6 @@ const useAuthCheck = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('tokenExpiration');
         navigate('/LogIn');
-      } else {
-        navigate('/Home')
       }
     } else {
       navigate('/LogIn');
