@@ -28,7 +28,7 @@ namespace Gaia.API.Controllers
         }
 
         [HttpPost("Register")]
-        public async Task<IActionResult> Register(UserRequest userRequest)
+        public async Task<IActionResult> Register([FromForm]UserRequest userRequest)
         {
             if (ModelState.IsValid)
             {
