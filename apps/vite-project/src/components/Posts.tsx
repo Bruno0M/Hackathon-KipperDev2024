@@ -6,9 +6,10 @@ interface PostProps {
   postUrl: string;
   description: string;
   author: string;
+  authorUrl: string;
 }
 
-export default function Posts({ postUrl, author }: PostProps) {
+export default function Posts({ postUrl, author, authorUrl }: PostProps) {
 
   return (
     <Box
@@ -28,6 +29,7 @@ export default function Posts({ postUrl, author }: PostProps) {
           sx={{ alignItems: "center", my: "5px" }}
         >
           <Avatar
+          src={authorUrl}
             sx={{
               width: "50px",
               height: "50px",

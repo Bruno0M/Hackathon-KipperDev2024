@@ -2,11 +2,14 @@ import { Box, Stack, IconButton, TextField } from "@mui/material";
 import NavPublish from "./NavPublish";
 import { useRef, useState } from "react";
 import createPost from "../services/Posts/CreatePost";
+import { useNavigate } from "react-router-dom";
 
 export default function Publish() {
   const [file, setFile] = useState<File | null>(null);
   const [description, setDescription] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
+
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
@@ -30,6 +33,7 @@ export default function Publish() {
       try {
         await createPost(formData);
         console.log("Post criado com sucesso");
+        navigate('/Home')
       } catch (error) {
         console.error("Erro ao criar o post:", error);
       }

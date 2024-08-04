@@ -11,6 +11,7 @@ interface Post {
   postUrl: string;
   description: string;
   author: string;
+  authorUrl: string;
 }
 
 export default function Home() {
@@ -46,6 +47,7 @@ export default function Home() {
               postUrl={post.postUrl}
               description={post.description}
               author={post.author}
+              authorUrl={post.authorUrl}
             />
             {index < posts.length - 1 && <Divider sx={{ my: 2 }} />}
           </Box>

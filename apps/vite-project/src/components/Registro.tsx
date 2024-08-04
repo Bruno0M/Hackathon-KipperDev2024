@@ -11,6 +11,7 @@ import {
 import AvatarPlaceholder from "../assets/AvatarPlaceholder.svg";
 import Upload from "../assets/upload.svg";
 import authRegister from "../services/Auth/AuthRegister";
+import { useNavigate } from "react-router-dom";
 
 export default function Registro() {
   const [formData, setFormData] = useState({
@@ -20,6 +21,8 @@ export default function Registro() {
     confirmPassword: "",
   });
   const [profileUrl, setProfileUrl] = useState<File | null>(null);
+  const navigate = useNavigate();
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -47,6 +50,9 @@ export default function Registro() {
     try {
       const response = await authRegister(data);
       console.log(response);
+      if (response.status == 200) {
+        navigate('/Login')
+      }
     } catch (error) {
       console.error("There was an error!", error);
     }
