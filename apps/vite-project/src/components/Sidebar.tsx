@@ -12,6 +12,7 @@ export default function Sidebar() {
       <Box
         sx={{
           ml: 0,
+          mt: 0,
           width: "100%",
           display: "flex",
           minHeight: "100vh",

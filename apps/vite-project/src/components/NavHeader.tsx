@@ -12,15 +12,20 @@ export default function NavHeader() {
     <Box
       component="header"
       sx={{
+        mt: 0,
         px: 1,
-        py: 0.8,
+        top: 0,
+        left: 0,
+        pb: 0.8,
+        right: 0,
+        zIndex: 99,
         width: "100%",
         height: "60px",
         opacity: "70%",
         display: "flex",
-        position: "sticky",
+        position: "fixed",
         flexDirection: "row",
-        backdropFilter: "blur(5px)",
+        backdropFilter: "blur(4px)",
         backgroundColor: "#00851080",
       }}
     >

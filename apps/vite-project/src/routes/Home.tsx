@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <Box sx={{ height: "100%" }}>
       <NavHeader />
-      <Box sx={{mb: 30}}>
+      <Box sx={{my: 10}}>
         <Posts />
         <Posts />
         <Posts />

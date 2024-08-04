@@ -4,17 +4,21 @@ export default function ErrorPage() {
     <Box
       component="form"
       sx={{
-        width: "300px",
+        mt: 10,
+        mx: "auto",
+        width: "400px",
         height: "230px",
-        border: "1px solid #D9D9D9",
-        borderRadius: "8px",
-        margin: "0 auto",
         padding: "24px",
-        marginTop: "50px",
+        textAlign: "center",
+        borderRadius: "8px",
+        border: "1px solid #D9D9D9",
       }}
     >
-      <Typography sx={{ marginBottom: "5px", color: "#1E1E1E" }}>
-        error 404
+      <Typography
+        variant="h1"
+        sx={{ marginBottom: "5px", color: "#1E1E1E", margin: "0 auto" }}
+      >
+        ERROR 404
       </Typography>
     </Box>
   );
