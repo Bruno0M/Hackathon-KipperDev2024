@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 type SidebarRow = {
   image: string;
@@ -8,9 +8,9 @@ type SidebarRow = {
 export default function SidebarRow({ image, title }: SidebarRow) {
   return (
     <Box
-      component="span"
       sx={{
         px: 1.5,
+        py: 0.7,
         width: 1,
         display: "flex",
         minHeight: "20px",
@@ -21,21 +21,18 @@ export default function SidebarRow({ image, title }: SidebarRow) {
       <Box
         component={"img"}
         src={image}
-        sx={{ justifyContent: "flex-start", py: 1 }}
+        sx={{ justifyContent: "flex-start", py: 1, width: 48 }}
       />
-      <Box
-        component={"span"}
+      <Typography
         sx={{
+          pl: 2,
           height: 1,
-          alignItems: "center",
-          textAlign: "center",
-          verticalAlign: "center",
-          justifyItems: "center",
-          justifyContent: "flex-start",
+          m: "auto 0",
+          fontWeight: 500,
         }}
       >
         {title}
-      </Box>
+      </Typography>
     </Box>
   );
 }

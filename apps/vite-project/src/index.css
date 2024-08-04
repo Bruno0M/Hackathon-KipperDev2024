@@ -10,3 +10,8 @@ body {
   margin: 0 auto;
   min-height: 90vh;
 }
+
+@font-face {
+  font-family: Rubik;
+  src: url(constants/fonts/Rubik-VariableFont_wght.ttf);
+}

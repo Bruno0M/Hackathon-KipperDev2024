@@ -14,7 +14,7 @@ export default function NavHeader() {
       sx={{
         px: 1,
         py: 0.8,
-        width: "100vw",
+        width: "100%",
         height: "60px",
         opacity: "70%",
         display: "flex",

@@ -60,10 +60,10 @@ const theme = createTheme({
       fontWeight: 800,
     },
     h3: {
-      fontSize: "1.5rem",
-      fontWeight: 800,
+      fontSize: "1.25rem",
+      fontWeight: 500,
     },
-    fontFamily: ["Nunito"].join(","),
+    fontFamily: ["Rubik"].join(","),
   },
 });
 

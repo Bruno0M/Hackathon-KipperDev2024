@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import SidebarRow from "./SidebarRow";
 import Save from "../assets/Save.svg";
 import Lock from "../assets/Lock.svg";
@@ -20,20 +20,29 @@ export default function Sidebar() {
           backdropFilter: "blur(5)",
         }}
       >
-        <Box component="span" sx={{ backgroundColor: "#008510D0", p: 1 }}>
+        <Box
+          component="span"
+          sx={{
+            backgroundColor: "#008510f0",
+            px: 1.5,
+            py: 2,
+            width: 1,
+            display: "flex",
+            minHeight: "20px",
+            backdropFilter: "blur(5)",
+          }}
+        >
           <Box
             component={"img"}
             src={AvatarPlaceholder}
             sx={{ justifyContent: "flex-start" }}
           />
-          <Box component={"span"} sx={{ textAlign: "center" }}>
-            Perfil
-          </Box>
+          <Typography variant="h3" sx={{ height: 1, pl: 2, m: "auto 0" }}>Perfil</Typography>
         </Box>
-        <SidebarRow image={Lock} title={"Segurança e privacidade"} />
         <SidebarRow image={Save} title={"Salvos"} />
         <SidebarRow image={Draft} title={"Rascunho"} />
         <SidebarRow image={Gear} title={"Configurações"} />
+        <SidebarRow image={Lock} title={"Segurança e privacidade"} />
       </Box>
     </Box>
   );
