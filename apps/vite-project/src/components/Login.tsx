@@ -1,5 +1,21 @@
+import React from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
+
+import authLogin from "../services/Auth/AuthLogin";
+
 export default function Login() {
+  const [email, setEmail] = React.useState<string>();
+  const [password, setPassword] = React.useState<string>();
+
+  function handleLogin() {
+    if (!email) return
+    if (!password) return
+    const authData: FormData = new FormData();
+    authData.append("email", email);
+    authData.append("password", password);
+    authLogin(authData);
+  }
+
   return (
     <Box
       component="form"
@@ -16,6 +32,7 @@ export default function Login() {
           Email
         </Typography>
         <TextField
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="*******"
           variant="outlined"
           size="small"
@@ -23,6 +40,7 @@ export default function Login() {
         />
         <Typography sx={{ marginBottom: "5px" }}>Senha</Typography>
         <TextField
+          onChange={(e) => setPassword(e.target.value)}
           placeholder="*******"
           variant="outlined"
           size="small"
@@ -50,6 +68,7 @@ export default function Login() {
             textTransform: "capitalize",
           }}
           variant="outlined"
+          onClick={handleLogin}
         >
           Entrar
         </Button>
