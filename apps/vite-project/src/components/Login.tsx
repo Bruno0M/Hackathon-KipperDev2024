@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import { Box, Typography, TextField, Button } from "@mui/material";
 
 import authLogin from "../services/Auth/AuthLogin";
@@ -14,7 +14,12 @@ export default function Login() {
     const authData: FormData = new FormData();
     authData.append("email", email);
     authData.append("password", password);
-    authLogin(authData);
+    try {
+      authLogin(authData);
+      redirect("/Home");
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (

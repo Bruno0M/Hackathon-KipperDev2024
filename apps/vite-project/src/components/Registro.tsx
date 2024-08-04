@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
 
 import authRegister from "../services/Auth/AuthRegister";
+import { redirect } from "react-router-dom";
 
 export default function Registro() {
   const [Email, setEmail] = React.useState<string>();
@@ -19,7 +20,12 @@ export default function Registro() {
     authData.append("Username", Username);
     authData.append("Password", password);
     authData.append("ConfirmPassword", confirmPassword);
-    authRegister(authData);
+    try {
+      authRegister(authData);
+      redirect("/Home");
+    } catch (err) {
+      console.log(err);
+    }
   }
   return (
     <Box
