@@ -1,81 +1,79 @@
-# Turborepo starter
+<img src="./docs/assets/GaiaBig.svg" alt="Logo Gaia" style="width:200px;"/>
 
-This is an official starter Turborepo.
+# Projeto Gaia
 
-## Using this example
+O Projeto Gaia consiste em uma plataforma de utilidade pública que busca disseminar informações localizadas e conteúdo rico voltado à conscientização sobre maneiras de mitigar possíveis crises climáticas. A plataforma abriga desde conteúdos acadêmicos relacionados ao tema até interações casuais e cotidianas. Nela, o usuário é capaz de interagir de forma similar às redes sociais voltadas ao entretenimento, além de publicar e acessar artigos informativos.
 
-Run the following command:
+---
 
-```sh
-npx create-turbo@latest
-```
+    Projeto de submissão para o Hackathon Fernanda KipperDev 2024
+    Tecnologia Contra Crises Climáticas: Soluções para Cidades Resilientes
 
-## What's inside?
+<p align="center">
+ <a href="#technologies">Tecnologias</a> • 
+ <a href="#started">Rodando o projeto</a> •
+ <a href="./docs/README.md">Elicitação de requisitos</a>
+</p>
 
-This Turborepo includes the following packages/apps:
+<h2 id="technologies">💻 Tecnologias</h2>
 
-### Apps and Packages
+#### Front-End:
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-AA00CC?style=for-the-badge&logo=Vite&logoColor=yellow)
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+#### Back-End:
 
-### Utilities
+![C#](https://img.shields.io/badge/CSharp-AA80AA?style=for-the-badge&logo=c#&logoColor=white)
+![ASPnet](https://img.shields.io/badge/ASP.net-007ACC?style=for-the-badge&logo=ASPnet&logoColor=white)
+![PostgresSQL](https://img.shields.io/badge/postgresSQL-80FF80?style=for-the-badge&logo=postgresSQL&logoColor=yellow)
 
-This Turborepo has some additional tools already setup for you:
+#### Devops
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+![Docker](https://img.shields.io/badge/Docker-000050?style=for-the-badge&logo=Docker&logoColor=white)
 
-### Build
+<h2 id="started">🚀 Vamos Começar!</h2>
 
-To build all apps and packages, run the following command:
+<h3>Pré-Requisitos</h3>
 
-```
-cd my-turborepo
-pnpm build
-```
+Para rodar o projeto, é necessário que tenha:
 
-### Develop
+![PNPM](https://img.shields.io/badge/npm-orange?style=for-the-badge&logo=pnpm&logoColor=white)
+![NPM](https://img.shields.io/badge/npm-red?style=for-the-badge&logo=npm&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-000050?style=for-the-badge&logo=Docker&logoColor=white)
+![Node.js](https://img.shields.io/badge/nodejs-00AA50?style=for-the-badge&logo=Node&logoColor=white)
 
-To develop all apps and packages, run the following command:
+<h3>Clonando o Projeto</h3>
 
-```
-cd my-turborepo
-pnpm dev
-```
+    git clone https://github.com/Bruno0M/Hackathon-KipperDev2024
 
-### Remote Caching
+<h3>Rodando o Projeto</h3>
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+Para rodar nosso FrontEnd, basta seguir o seguinte:
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+    cd Hackathon-KipperDev2024/apps/vite-project/
+    pnpm install
+    pnpm run dev
 
-```
-cd my-turborepo
-npx turbo login
-```
+#### Com isso, o Front-End estará disponível localmente em http://localhost:5173
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+---
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+### E para rodar a Api do Projeto:
 
-```
-npx turbo link
-```
+    cd Hackathon-KipperDev2024/apps/Gaia/Gaia.API
 
-## Useful Links
+    docker-compose up -d
 
-Learn more about the power of Turborepo:
+ou
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+    docker compose up -d
+
+#### Em seguida, você vai ter a API Rodando em na porta _1111_, e caso queira ver a documentação da API, basta acessar com o Swagger
+
+    http://localhost:1111/swagger/index.html.
+
+#### A porta 8002 é onde está rodando o banco de dados, e caso queira administrar esse banco, basta acessar o pgadmin4 em:
+
+    http://localhost:16543/login
