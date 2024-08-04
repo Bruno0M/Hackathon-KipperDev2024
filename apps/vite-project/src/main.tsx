@@ -4,8 +4,11 @@ import ReactDOM from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 
-import ErrorPage from './routes/ErrorPage';
 import App from './App';
+import Home from './routes/Home';
+import LogIn from './routes/LogIn';
+import Register from './routes/Register';
+import ErrorPage from './routes/ErrorPage';
 
 
 const router = createBrowserRouter([
@@ -13,6 +16,18 @@ const router = createBrowserRouter([
     path: "/",
     element: <App/>,
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "/LogIn",
+    element: <LogIn/>,
+  },
+  {
+    path: "/Register",
+    element: <Register/>,
+  },
+  {
+    path: "/Home",
+    element: <Home/>,
   }
 ]);
 

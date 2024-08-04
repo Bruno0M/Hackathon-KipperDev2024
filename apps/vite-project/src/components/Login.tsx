@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Box, Typography, TextField, Button } from "@mui/material";
 
 import authLogin from "../services/Auth/AuthLogin";
@@ -8,8 +9,8 @@ export default function Login() {
   const [password, setPassword] = React.useState<string>();
 
   function handleLogin() {
-    if (!email) return
-    if (!password) return
+    if (!email) return;
+    if (!password) return;
     const authData: FormData = new FormData();
     authData.append("email", email);
     authData.append("password", password);
@@ -72,24 +73,26 @@ export default function Login() {
         >
           Entrar
         </Button>
-        <Button
-          sx={{
-            width: "128px",
-            height: "40px",
-            fontSize: "13px",
-            borderRadius: "8px",
-            border: "1px solid #104015",
-            color: "#F5F5F5",
-            backgroundColor: "#008510",
-            textTransform: "capitalize",
-            "&:hover": {
-              backgroundColor: "#104015",
-            },
-          }}
-          variant="outlined"
-        >
-          Criar Conta
-        </Button>
+        <Link to={"/Register"}>
+          <Button
+            sx={{
+              width: "128px",
+              height: "40px",
+              fontSize: "13px",
+              borderRadius: "8px",
+              border: "1px solid #104015",
+              color: "#F5F5F5",
+              backgroundColor: "#008510",
+              textTransform: "capitalize",
+              "&:hover": {
+                backgroundColor: "#104015",
+              },
+            }}
+            variant="outlined"
+          >
+            Criar Conta
+          </Button>
+        </Link>
       </Box>
     </Box>
   );

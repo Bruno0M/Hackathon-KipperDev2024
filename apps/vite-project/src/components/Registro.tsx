@@ -1,5 +1,26 @@
+import React from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
+
+import authRegister from "../services/Auth/AuthRegister";
+
 export default function Registro() {
+  const [Email, setEmail] = React.useState<string>();
+  const [Username, setUsername] = React.useState<string>();
+  const [password, setPassword] = React.useState<string>();
+  const [confirmPassword, setConfirmPassword] = React.useState<string>();
+
+  function handleRegister() {
+    if (!Email) return;
+    if (!password) return;
+    if (!Username) return;
+    if (!confirmPassword) return;
+    const authData: FormData = new FormData();
+    authData.append("Email", Email);
+    authData.append("Username", Username);
+    authData.append("Password", password);
+    authData.append("ConfirmPassword", confirmPassword);
+    authRegister(authData);
+  }
   return (
     <Box
       component="form"
@@ -12,10 +33,11 @@ export default function Registro() {
       }}
     >
       <div id="inputs">
-      <Typography sx={{ marginBottom: "5px", color: "#1E1E1E" }}>
+        <Typography sx={{ marginBottom: "5px", color: "#1E1E1E" }}>
           Nome
         </Typography>
         <TextField
+          onChange={(e) => setUsername(e.target.value)}
           variant="outlined"
           size="small"
           sx={{ width: "100%", marginBottom: "24px", color: "#1E1E1E" }}
@@ -24,12 +46,14 @@ export default function Registro() {
           Email
         </Typography>
         <TextField
+          onChange={(e) => setEmail(e.target.value)}
           variant="outlined"
           size="small"
           sx={{ width: "100%", marginBottom: "24px", color: "#1E1E1E" }}
         />
         <Typography sx={{ marginBottom: "5px" }}>Senha</Typography>
         <TextField
+          onChange={(e) => setPassword(e.target.value)}
           variant="outlined"
           size="small"
           sx={{ width: "100%", marginBottom: "24px" }}
@@ -38,6 +62,7 @@ export default function Registro() {
           Confirme sua senha
         </Typography>
         <TextField
+          onChange={(e) => setConfirmPassword(e.target.value)}
           variant="outlined"
           size="small"
           sx={{ width: "100%", marginBottom: "24px", color: "#1E1E1E" }}
@@ -64,10 +89,11 @@ export default function Registro() {
             textTransform: "capitalize",
             backgroundColor: "#008510",
             "&:hover": {
-                backgroundColor: "#104015",
-            }
+              backgroundColor: "#104015",
+            },
           }}
           variant="outlined"
+          onClick={handleRegister}
         >
           Criar conta
         </Button>
