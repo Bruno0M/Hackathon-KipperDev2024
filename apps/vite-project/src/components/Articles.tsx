@@ -1,6 +1,6 @@
-import { Box, Typography, Avatar, Stack } from "@mui/material";
-import UserData from "./UserData";
-import 
+import { Box, Typography } from "@mui/material";
+import UserData from "./Header";
+
 export default function Articles() {
     return (
         <>

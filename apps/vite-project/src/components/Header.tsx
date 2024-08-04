@@ -1,5 +1,5 @@
 import { Box, Typography, Stack, IconButton } from "@mui/material";
-import { BrowserRouter as Routes, Route, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import close from "../assets/close.svg"
 import AvatarPlaceholder from "../assets/AvatarPlaceholder.svg"
 
