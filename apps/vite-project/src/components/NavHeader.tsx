@@ -17,7 +17,7 @@ export default function NavHeader() {
         position: "sticky",
         flexDirection: "row",
         backdropFilter: "blur(5px)",
-        backgroundColor: "secondary.light",
+        backgroundColor: "#00851080",
       }}
     >
       <Box
@@ -25,7 +25,7 @@ export default function NavHeader() {
         src={Hamburguer}
         sx={{ justifyContent: "flex-start" }}
       />
-      <Box sx={{ flex: 1, width: 1, display: "flex", justifyContent: "flex-end" }}>
+      <Box sx={{ flex: 1, width: 1, gap: 1, display: "flex", justifyContent: "flex-end" }}>
         <Box component={"img"} src={Search} sx={{ flex: "flex-end" }} />
         <Box component={"img"} src={Bell} sx={{ justifySelf: "flex-end" }} />
       </Box>

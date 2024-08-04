@@ -1,33 +1,38 @@
 import { Box } from "@mui/material";
-import Bell from "../assets/Bell.svg";
-import Search from "../assets/Search.svg";
-import Hamburguer from "../assets/Hamburguer.svg";
+import SidebarRow from "./SidebarRow";
+import Save from "../assets/Save.svg";
+import Lock from "../assets/Lock.svg";
+import Gear from "../assets/Gear.svg";
+import Draft from "../assets/Draft.svg";
+import AvatarPlaceholder from "../assets/AvatarPlaceholder.svg";
 
 export default function Sidebar() {
   return (
-    <Box
-      component="header"
-      sx={{
-        px: 1,
-        py: 0.8,
-        width: "100vw",
-        height: "60px",
-        opacity: "70%",
-        display: "flex",
-        position: "sticky",
-        flexDirection: "row",
-        backdropFilter: "blur(5px)",
-        backgroundColor: "secondary.light",
-      }}
-    >
+    <Box sx={{ width: "100vw", position: "absolute", top: 0, left: 0 }}>
       <Box
-        component={"img"}
-        src={Hamburguer}
-        sx={{ justifyContent: "flex-start" }}
-      />
-      <Box sx={{ flex: 1, width: 1, display: "flex", justifyContent: "flex-end" }}>
-        <Box component={"img"} src={Search} sx={{ flex: "flex-end" }} />
-        <Box component={"img"} src={Bell} sx={{ justifySelf: "flex-end" }} />
+        sx={{
+          ml: 0,
+          width: "30%",
+          display: "flex",
+          minWidth: "max-content",
+          flexDirection: "column",
+          backdropFilter: "blur(5)",
+        }}
+      >
+        <Box component="span" sx={{ backgroundColor: "#008510D0" }}>
+          <Box
+            component={"img"}
+            src={AvatarPlaceholder}
+            sx={{ justifyContent: "flex-start" }}
+          />
+          <Box component={"p"} sx={{ justifySelf: "flex-end" }}>
+            Perfil
+          </Box>
+        </Box>
+        <SidebarRow image={Lock} title={"Segurança e privacidade"} />
+        <SidebarRow image={Save} title={"Salvos"} />
+        <SidebarRow image={Draft} title={"Rascunho"} />
+        <SidebarRow image={Gear} title={"Configurações"} />
       </Box>
     </Box>
   );
