@@ -27,6 +27,7 @@ namespace Gaia.Infrastructure.Data
         }
 
         public DbSet<Post> Posts { get; set; }
+        public DbSet<UpVote> UpVotes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

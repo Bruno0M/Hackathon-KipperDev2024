@@ -27,5 +27,12 @@ namespace Gaia.Infrastructure.Repositories
                 .Include(p => p.User)
                 .ToListAsync();
         }
+
+        public async Task<Post> GetPostWithUpVotesAsync(Guid postId)
+        {
+            return await _context.Posts
+                .Include(p => p.UpVotes)
+                .FirstOrDefaultAsync(p => p.Id == postId);
+        }
     }
 }

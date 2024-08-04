@@ -6,5 +6,6 @@ namespace Gaia.Domain.Repositories
     {
         Task CreatePostAsync(Post post);
         Task<IEnumerable<Post>> GetPostsAsync();
+        Task<Post> GetPostWithUpVotesAsync(Guid postId);
     }
 }

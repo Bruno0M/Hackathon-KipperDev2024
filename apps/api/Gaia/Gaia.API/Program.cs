@@ -65,6 +65,8 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<IImgurService, ImgurService>();
+builder.Services.AddScoped<IUpVoteRepository, UpVoteRepository>();
+builder.Services.AddScoped<IUpVoteService, UpVoteService>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {

@@ -11,11 +11,13 @@ namespace Gaia.API.Controllers
     {
         private readonly IPostService _postService;
         private readonly IImgurService _imgurService;
+        private readonly IUpVoteService _upVoteService;
 
-        public PostsController(IPostService postService, IImgurService imgurService)
+        public PostsController(IPostService postService, IImgurService imgurService, IUpVoteService upVoteService)
         {
             _postService = postService;
             _imgurService = imgurService;
+            _upVoteService = upVoteService;
         }
 
         [Authorize]
@@ -35,6 +37,19 @@ namespace Gaia.API.Controllers
         public async Task<IActionResult> Get()
         {
             return Ok(await _postService.GetPostsAsync());
+        }
+
+        [Authorize]
+        [HttpPost("{postId}/upVote")]
+        public async Task<IActionResult> UpVotepost(Guid postId)
+        {
+            if (ModelState.IsValid)
+            {
+               var response = await _upVoteService.ToggleUpVoteAsync(postId, User);
+                return Ok(response);
+            }
+
+            return BadRequest();
         }
 
     }
