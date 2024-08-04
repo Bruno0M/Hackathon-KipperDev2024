@@ -3,6 +3,24 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+# Ignore build and cache directories
+**/bin/
+**/obj/
+
+# Ignore specific file types
+*.dll
+*.exe
+*.pdb
+*.cache
+*.nuget
+*.csproj.FileListAbsolute.txt
+*.csprojAssemblyReference.cache
+
+# Ignore specific directories
+Gaia.Test/bin*
+Gaia.Test/obj*
+
+
 # dotenv files
 .env
 
