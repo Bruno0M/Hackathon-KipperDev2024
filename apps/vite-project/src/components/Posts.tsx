@@ -1,15 +1,40 @@
-import { Box, Typography, Avatar, Stack, IconButton } from "@mui/material";
+import { Box, Typography, Avatar, Stack, IconButton, Button } from "@mui/material";
 import LeafUpvote from "../assets/LeafUpvote.svg";
 import SaveIcon from "../assets/Save.svg";
+import { useState } from "react";
+import upVote from "../services/Posts/UpVote";
 
 interface PostProps {
+  id: string;
   postUrl: string;
   description: string;
   author: string;
   authorUrl: string;
 }
 
-export default function Posts({ postUrl, author, authorUrl }: PostProps) {
+export default function Posts({ id, postUrl, description, author, authorUrl }: PostProps) {
+  const [voted, setVoted] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+
+  const handleUpvote = async () => {
+    try {
+      await upVote(id);
+      setVoted(true);
+      console.log("Post upvoted successfully");
+    } catch (error) {
+      console.error("Failed to upvote post:", error);
+    }
+  };
+
+  const handleToggleExpand = () => {
+    setExpanded(!expanded);
+  };
+
+  const truncatedDescription = description.length > 100 && !expanded
+    ? `${description.substring(0, 100)}...`
+    : description;
+
 
   return (
     <Box
@@ -29,7 +54,7 @@ export default function Posts({ postUrl, author, authorUrl }: PostProps) {
           sx={{ alignItems: "center", my: "5px" }}
         >
           <Avatar
-          src={authorUrl}
+            src={authorUrl}
             sx={{
               width: "50px",
               height: "50px",
@@ -38,7 +63,7 @@ export default function Posts({ postUrl, author, authorUrl }: PostProps) {
             }}
           />
           <Typography sx={{ fontSize: "14px", fontWeight: "600" }}>
-          {author}
+            {author}
           </Typography>
         </Stack>
       </Box>
@@ -63,16 +88,33 @@ export default function Posts({ postUrl, author, authorUrl }: PostProps) {
         >
         </Box>
       </Box>
+      <Box sx={{ mt: 2 }}>
+        <Typography variant="body2">
+          {truncatedDescription}
+        </Typography>
+        {description.length > 100 && (
+          <Button onClick={handleToggleExpand} sx={{ mt: 0.4 }}>
+            {expanded ? "Ler menos" : "Ler mais"}
+          </Button>
+        )}
+      </Box>
       <Box>
         <Stack
           direction="row"
           sx={{ justifyContent: "space-between", alignItems: "center" }}
         >
-          <IconButton>
+          <IconButton onClick={handleUpvote}>
             <Box
               component={"img"}
               style={{ width: "50.37px", height: "53px" }}
               src={LeafUpvote}
+              alt="Upvote"
+              sx={{
+                width: "50.37px",
+                height: "53px",
+                color: voted ? "#00FF00" : "inherit", // Change color to green if voted
+                "& path": { fill: voted ? "#00FF00" : "inherit" } // Ensure that the fill color changes
+              }}
             />
           </IconButton>
           <Box>

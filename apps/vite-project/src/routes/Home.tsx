@@ -36,14 +36,15 @@ export default function Home() {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
-  
+
   return (
     <Box sx={{ height: "100%" }}>
       <NavHeader />
-      <Box sx={{my: 10}}>
+      <Box sx={{ my: 10 }}>
         {posts.map((post, index) => (
           <Box key={post.id} sx={{ mb: 2 }}>
-            <Posts 
+            <Posts
+              id={post.id}
               postUrl={post.postUrl}
               description={post.description}
               author={post.author}
