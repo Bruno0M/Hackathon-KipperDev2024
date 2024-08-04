@@ -1,32 +1,48 @@
-import React from "react";
-import { Box, Typography, TextField, Button } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Typography, TextField, Button, Input } from "@mui/material";
 
 import authRegister from "../services/Auth/AuthRegister";
-import { redirect } from "react-router-dom";
 
 export default function Registro() {
-  const [Email, setEmail] = React.useState<string>();
-  const [Username, setUsername] = React.useState<string>();
-  const [password, setPassword] = React.useState<string>();
-  const [confirmPassword, setConfirmPassword] = React.useState<string>();
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+  const [profileUrl, setProfileUrl] = useState<File | null>(null);
 
-  function handleRegister() {
-    if (!Email) return;
-    if (!password) return;
-    if (!Username) return;
-    if (!confirmPassword) return;
-    const authData: FormData = new FormData();
-    authData.append("Email", Email);
-    authData.append("Username", Username);
-    authData.append("Password", password);
-    authData.append("ConfirmPassword", confirmPassword);
-    try {
-      authRegister(authData);
-      redirect("/Home");
-    } catch (err) {
-      console.log(err);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setProfileUrl(e.target.files[0]);
     }
-  }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const data = new FormData();
+    data.append('Username', formData.username);
+    data.append('Email', formData.email);
+    if (profileUrl) {
+      data.append('ProfileUrl', profileUrl);
+    }
+    data.append('Password', formData.password);
+    data.append('ConfirmPassword', formData.confirmPassword);
+
+    try {
+      const response = await authRegister(data);
+      console.log(response);
+    } catch (error) {
+      console.error('There was an error!', error);
+    }
+  };
+
   return (
     <Box
       component="form"
@@ -37,13 +53,23 @@ export default function Registro() {
         margin: "0 auto",
         padding: "24px",
       }}
+      onSubmit={handleSubmit}
     >
       <div id="inputs">
+        <Typography sx={{ marginBottom: "5px", color: "#1E1E1E" }}>Foto de Perfil</Typography>
+        <Input
+          fullWidth
+          type="file"
+          name="profileUrl"
+          onChange={handleFileChange}
+          inputProps={{ accept: 'image/*' }}
+        />
         <Typography sx={{ marginBottom: "5px", color: "#1E1E1E" }}>
           Nome
         </Typography>
         <TextField
-          onChange={(e) => setUsername(e.target.value)}
+          name="username"
+          onChange={handleChange}
           variant="outlined"
           size="small"
           sx={{ width: "100%", marginBottom: "24px", color: "#1E1E1E" }}
@@ -52,14 +78,17 @@ export default function Registro() {
           Email
         </Typography>
         <TextField
-          onChange={(e) => setEmail(e.target.value)}
+          name="email"
+          onChange={handleChange}
           variant="outlined"
           size="small"
           sx={{ width: "100%", marginBottom: "24px", color: "#1E1E1E" }}
         />
         <Typography sx={{ marginBottom: "5px" }}>Senha</Typography>
         <TextField
-          onChange={(e) => setPassword(e.target.value)}
+          name="password"
+          type="password"
+          onChange={handleChange}
           variant="outlined"
           size="small"
           sx={{ width: "100%", marginBottom: "24px" }}
@@ -68,7 +97,9 @@ export default function Registro() {
           Confirme sua senha
         </Typography>
         <TextField
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          name="confirmPassword"
+          type="password"
+          onChange={handleChange}
           variant="outlined"
           size="small"
           sx={{ width: "100%", marginBottom: "24px", color: "#1E1E1E" }}
@@ -85,6 +116,7 @@ export default function Registro() {
         }}
       >
         <Button
+          type="submit"
           sx={{
             width: "100%",
             height: "40px",
@@ -99,7 +131,6 @@ export default function Registro() {
             },
           }}
           variant="outlined"
-          onClick={handleRegister}
         >
           Criar conta
         </Button>
