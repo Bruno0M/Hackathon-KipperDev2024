@@ -32,6 +32,7 @@ namespace Gaia.Application.Services
             {
                 response.Message = "User not found";
                 response.Status = HttpStatusCode.NotFound;
+                return response;
             }
 
             var postUrl = await _imgurService.UploadImageAsync(postRequest.Image);
