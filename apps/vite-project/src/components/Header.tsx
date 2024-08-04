@@ -8,7 +8,7 @@ function HandleText() {
   return location.pathname 
 }
 
-export default function UserData() {
+export default function Header() {
     return (
         <Box sx={{ width: "100%vw", padding: "0px 20px 0px 20px", backdropFilter: "blur(5px)",
           backgroundColor: "#00C04041"}}>
