@@ -1,7 +1,7 @@
 import { Box, Typography, Stack, IconButton } from "@mui/material";
 export default function NavBar() {
     return (
-        <Box sx={{ width: "428px", height: "80px", backgroundColor: "#EFEBE7", alignContent: "center" }}>
+        <Box sx={{ width: "100%vw", height: "80px", backgroundColor: "#EFEBE7", alignContent: "center" }}>
             <Stack direction="row" sx={{ justifyContent: "space-around" }}>
                 <IconButton>
                     <img src="./src/assets/browse.svg"/>
