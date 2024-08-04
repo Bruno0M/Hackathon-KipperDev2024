@@ -1,11 +1,14 @@
-import LogIn from "./routes/LogIn";
+import React from 'react';
+import useAuthCheck from './hooks/useAuthCheck';
+import { Outlet } from 'react-router-dom'; 
 
-function App() {
+const App: React.FC = () => {
+  useAuthCheck(); 
   return (
-    <>
-      <LogIn />
-    </>
+    <div>
+      <Outlet />
+    </div>
   );
-}
+};
 
 export default App;
