@@ -8,6 +8,22 @@ export default function Login() {
   const [email, setEmail] = React.useState<string>();
   const [password, setPassword] = React.useState<string>();
   const navigate = useNavigate();
+  const [formsError, setFormsError] = React.useState({
+    email: false,
+    password: false,
+  })
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+    setFormsError((prev) => ({ ...prev, email: value.length === 0 }));
+    
+  };
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setPassword(value);
+    setFormsError((prev) => ({ ...prev, password: value.length === 0 }));
+  };
 
 
   async function handleLogin() {
@@ -35,7 +51,6 @@ export default function Login() {
       console.error('Login error:', err);
     }
   }
-
   return (
     <Box
       component="form"
@@ -47,26 +62,30 @@ export default function Login() {
         padding: "24px",
       }}
     >
-      <div id="inputs">
+      <form >
         <Typography sx={{ marginBottom: "5px", color: "#1E1E1E" }}>
           Email
         </Typography>
         <TextField
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleEmailChange}
+          error={formsError.email}
+          helperText={formsError.email == true ? "Este campo é obrigatório" : ""}
           placeholder="*******"
           variant="outlined"
           size="small"
-          sx={{ width: "100%", marginBottom: "24px", color: "#1E1E1E" }}
+          sx={{ width: "100%", marginBottom: "20px", color: "#1E1E1E", }}
         />
         <Typography sx={{ marginBottom: "5px" }}>Senha</Typography>
         <TextField
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={handlePasswordChange}
+          error={formsError.password}
+          helperText={formsError.password == true ? "Este campo é obrigatório" : ""}
           placeholder="*******"
           variant="outlined"
           size="small"
-          sx={{ width: "100%", marginBottom: "24px" }}
+          sx={{ width: "100%", marginBottom: "20px" }}
         />
-      </div>
+      </form>
       <Box
         sx={{
           display: "flex",
