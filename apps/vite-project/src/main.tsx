@@ -4,7 +4,6 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 
-import App from "./App";
 import Home from "./routes/Home";
 import LogIn from "./routes/LogIn";
 import Navegar from "./routes/Navegar";
@@ -12,6 +11,7 @@ import Publicar from "./routes/Publicar";
 import Leituras from "./routes/Leituras";
 import Register from "./routes/Registrar";
 import ErrorPage from "./routes/ErrorPage";
+import App from "./App";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/LogIn",
+        path: "/Login",
         element: <LogIn />,
       },
       {
