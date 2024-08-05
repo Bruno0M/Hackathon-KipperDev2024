@@ -26,7 +26,7 @@ export default function Home() {
         setPosts(data.data);
         setLoading(false);
       } catch (err) {
-        setError("Failed to fetch posts");
+        setError("Failed to fetch posts: press f5");
         setLoading(false);
       }
     };
