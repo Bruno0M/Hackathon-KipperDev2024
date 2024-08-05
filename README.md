@@ -37,9 +37,9 @@ O Projeto Gaia consiste em uma plataforma de utilidade pública que busca dissem
 
 <h3>Pré-Requisitos</h3>
 
-Para rodar o projeto, é necessário que tenha:
+**Para rodar o projeto, é necessário que tenha:**
 
-![PNPM](https://img.shields.io/badge/npm-orange?style=for-the-badge&logo=pnpm&logoColor=white)
+![PNPM](https://img.shields.io/badge/pnpm-orange?style=for-the-badge&logo=pnpm&logoColor=white)
 ![NPM](https://img.shields.io/badge/npm-red?style=for-the-badge&logo=npm&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-000050?style=for-the-badge&logo=Docker&logoColor=white)
 ![Node.js](https://img.shields.io/badge/nodejs-00AA50?style=for-the-badge&logo=Node&logoColor=white)
@@ -48,19 +48,46 @@ Para rodar o projeto, é necessário que tenha:
 
     git clone https://github.com/Bruno0M/Hackathon-KipperDev2024
 
-<h3>Rodando o Projeto</h3>
+<h2>Rodando o Projeto</h2>
 
-Para rodar nosso FrontEnd, basta seguir o seguinte:
+**Configure o seu abiente:**
 
-    cd Hackathon-KipperDev2024/apps/vite-project/
-    pnpm install
-    pnpm run dev
+- Navegue para vite-project/ , crie um arquivo ".env" e insira a URL da sua API
+
+      VITE_BASE_URL="http://localhost:1111/" # Por exemplo
+
+
+- **Para rodar nosso FrontEnd, basta seguir o seguinte:**
+
+      cd Hackathon-KipperDev2024/apps/vite-project/
+      pnpm install
+      pnpm run dev
 
 #### Com isso, o Front-End estará disponível localmente em http://localhost:5173
 
 ---
 
-### E para rodar a Api do Projeto:
+## E para rodar a Api do Projeto:
+
+#### Configurando o Imgur
+
+Basta entrar nesse link:
+
+[Imgur Auth](https://api.imgur.com/oauth2/addclient)
+
+E após fazer o cadastro a seguir as keys serão disponibilizadas
+
+<img src="./docs/assets/imgur-help.png" alt="Passos Imgur" style="width:500px;"/>
+
+#### Após obter as Keys, encontre o arquivo appsettings.Development.json
+
+    cd Hackathon-KipperDev2024/apps/Gaia/Gaia.API/appsettings.Development.json
+
+Adicione esse trecho de código depois do “JWT” como mostra a imagem, e depois coloquem as keys em seus lugares correspondentes
+
+<img src="./docs/assets/appsettings.png" alt="App settings print" style="width:700px;"/>
+
+#### Após configurar as Keys, vamos iniciar o Docker
 
     cd Hackathon-KipperDev2024/apps/Gaia/Gaia.API
 
