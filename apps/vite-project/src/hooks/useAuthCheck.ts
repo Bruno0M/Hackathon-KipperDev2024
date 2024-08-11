@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const useAuthCheck = () => {
+export default function useAuthCheck() {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,5 +22,3 @@ const useAuthCheck = () => {
     }
   }, [navigate]);
 };
-
-export default useAuthCheck;

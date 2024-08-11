@@ -1,11 +1,11 @@
-import { Outlet } from 'react-router-dom';
 import useAuthCheck from './hooks/useAuthCheck';
+import LogIn from './routes/LogIn';
 
 export default function App() {
-    useAuthCheck(); 
+    // useAuthCheck(); 
   return (
     <div>
-      <Outlet />
+      <LogIn />
     </div>
   );
 };

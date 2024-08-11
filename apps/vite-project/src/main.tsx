@@ -1,3 +1,4 @@
+// main.tsx
 import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -9,41 +10,60 @@ import LogIn from "./routes/LogIn";
 import Navegar from "./routes/Navegar";
 import Publicar from "./routes/Publicar";
 import Leituras from "./routes/Leituras";
-import Register from "./routes/Registrar";
 import ErrorPage from "./routes/ErrorPage";
 import App from "./App";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import Registrar from "./routes/Registrar";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <ProtectedRoute>
+        <App />
+      </ProtectedRoute>
+    ),
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/Login",
-        element: <LogIn />,
-      },
-      {
-        path: "/Register",
-        element: <Register />,
-      },
-      {
-        path: "/Home",
-        element: <Home />,
-      },
-      {
-        path: "/navegar",
-        element: <Navegar />,
-      },
-      {
-        path: "/publicar",
-        element: <Publicar />,
-      },
-      {
-        path: "/leituras",
-        element: <Leituras />,
-      },
-    ]
+  },
+  {
+    path: "/Login",
+    element: <LogIn />,
+  },
+  {
+    path: "/Register",
+    element: <Registrar />,
+  },
+  {
+    path: "/Home",
+    element: (
+      <ProtectedRoute>
+        <Home />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/navegar",
+    element: (
+      <ProtectedRoute>
+        <Navegar />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/publicar",
+    element: (
+      <ProtectedRoute>
+        <Publicar />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/leituras",
+    element: (
+      <ProtectedRoute>
+        <Leituras />
+      </ProtectedRoute>
+    ),
   },
 ]);
 
@@ -85,10 +105,9 @@ const theme = createTheme({
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <CssBaseline>
-      <ThemeProvider theme={theme}>
-        <RouterProvider router={router} />
-      </ThemeProvider>
-    </CssBaseline>
+    <CssBaseline />
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );
